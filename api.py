@@ -4,12 +4,14 @@ import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
 import nest_asyncio
+import os
 
 # 🔹 Inicializa a API
 app = FastAPI(title="API de Previsão com XGBoost")
 
 # 🔹 Carrega o modelo salvo
-modelo = joblib.load(r'C:\Users\AGFAKZZ\Desktop\FIAP\Fase 5 - MLOps\modelo_xgboost.joblib')
+modelPath = os.path.join(os.getcwd(), 'modelo_xgboost.joblib')
+modelo = joblib.load(modelPath)
 
 # 🔹 Define a estrutura dos dados esperados na requisição
 class DadosEntrada(BaseModel):
