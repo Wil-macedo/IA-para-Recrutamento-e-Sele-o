@@ -1,10 +1,10 @@
+import os
+import joblib
 import uvicorn
-import joblib  # Ou use pickle se preferir
 import numpy as np
+import nest_asyncio
 from fastapi import FastAPI
 from pydantic import BaseModel
-import nest_asyncio
-import os
 
 # 🔹 Inicializa a API
 app = FastAPI(title="API de Previsão com XGBoost")

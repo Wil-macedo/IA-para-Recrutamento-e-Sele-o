@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mlflow-app:
+    build:
+      context: .
+      dockerfile: Dockerfile-mlflow
+    image: tc-mlflow-11 # Ainda é bom dar um nome à imagem
+    ports:
+      - "5000:5000"
+    # https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file
+    environment:
+      - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - MLFLOW_ARTIFACT_ROOT=${MLFLOW_ARTIFACT_ROOT}
+      - MLFLOW_BACKEND_STORE_URI=${MLFLOW_BACKEND_STORE_URI}
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    image: tc-app-v2 # Dê um nome para a imagem do seu aplicativo
+    ports:
+      - "8080:80"
+
+# docker container prune & docker compose -f docker-compose.yaml build --no-cache & docker compose -f docker-compose.yaml up
+
+# docker compose -f docker-compose.yaml down
+# docker compose -f docker-compose.yaml up

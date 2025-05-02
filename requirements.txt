@@ -1,12 +1,4 @@
-fastapi
-uvicorn[standard]
-scikit-learn
-xgboost
-numpy
-joblib
-nest_asyncio
-statsmodels
-imblearn
-matplotlib
-seaborn
-mlflow
+boto3
+pytest
+autopep8
+python-dotenv
