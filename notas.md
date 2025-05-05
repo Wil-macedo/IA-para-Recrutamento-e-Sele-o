@@ -1,0 +1,1 @@
+autopep8 --in-place -aaa  # Nível 3 para aplicação do PEP8 no código.

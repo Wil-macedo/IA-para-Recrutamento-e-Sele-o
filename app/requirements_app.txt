@@ -1,0 +1,12 @@
+urllib3
+tqdm
+boto3
+scipy
+Flask
+pandas
+joblib
+mlflow
+xgboost
+gunicorn
+requests
+imbalanced-learn

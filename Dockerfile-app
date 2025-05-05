@@ -3,11 +3,17 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY . .
+COPY /app .
+
+RUN apt-get update && apt-get install -y git
 
 RUN pip install --no-cache-dir -r requirements_app.txt
 
 EXPOSE 8000
 
 # Comando para iniciar a API
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:8000 main:app
+
+ENTRYPOINT ["gunicorn", "-w", "1", "-b", "0.0.0.0:8000", "--timeout", "120", "app:app"]
