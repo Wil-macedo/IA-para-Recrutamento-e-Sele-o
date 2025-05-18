@@ -3,6 +3,7 @@ import os
 import boto3  # Use in MLFLOW.
 import mlflow
 import joblib
+import requests
 import pandas as pd
 from xgboost import XGBClassifier
 from application.libs.pre_processing_model import pre_processing
@@ -15,13 +16,19 @@ def train_model():
         
         print("STARTING - train_model()")
         
-        if os.name=="nt":  # windows
-            print("INICIANDO EXPERIMENTOS")
-            mlflow.set_tracking_uri(uri="http://localhost:5000")
+        try:
+            mlFlow_url:str = None
+            # URL pode variar dependendo do ambiente, se está rodando com docker compose ou em container isolados.
+            for url in ("http://localhost:5000", "http://mlflow-app:5000"):
+                
+                response = requests.get(url, timeout=10)
+                if response.status_code == 200:
+                    mlFlow_url = url
             
-        else:  # Docker
-            print("INICIANDO EXPERIMENTOS")
-            mlflow.set_tracking_uri(uri="http://mlflow-app:5000")
+            if mlFlow_url is not None:
+                mlflow.set_tracking_uri(uri=mlFlow_url)
+        except Exception as ex:
+            print("FALHA MLFLOW :(") 
             
         mlflow.set_experiment("MLflow Recrutamento & seleção")
 
