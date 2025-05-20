@@ -150,7 +150,7 @@ def pre_processing():
         # Manter o mesmo índice de X
         df_original_Y = df_original_Y[df_original_X.index]
 
-        le = LabelEncoder()
+        # le = LabelEncoder()
 
         # Lista das colunas a codificar
         colunas_categoricas = [

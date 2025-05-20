@@ -1,16 +1,14 @@
 
-import os
-import boto3  # Use in MLFLOW.
 import mlflow
 import joblib
 import requests
 import pandas as pd
 from xgboost import XGBClassifier
-from application.libs.pre_processing_model import pre_processing
+from .pre_processing_model import pre_processing
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 
-def train_model():
+def train_model(test=False):
     try:
         # Create a new MLflow Experiment
         
@@ -85,7 +83,7 @@ def train_model():
             # 🔹 Salvando o modelo em disco.
             joblib.dump(model, "modelo_xgboost.joblib")
 
-        return f"MODEL TRAINED = ACCURACY:{accuracy:.2%}"
+        return f"MODEL TRAINED = ACCURACY:{accuracy:.2%}" if not test else accuracy
 
     except Exception as ex:
         print("@ ERRO @")

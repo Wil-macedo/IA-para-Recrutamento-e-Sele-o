@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Filtro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form select,
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        form select[multiple] {
+            height: 160px;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            form select[multiple] {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Filtrar Vagas</h2>
+        <form action="/predict-painel" method="post">
+            <label>Sexo:</label>
+            <select name="sexo">
+                <option value=""></option>
+                <option>Masculino</option>
+                <option>Feminino</option>
+            </select>
+
+            <label>Nível de Inglês do Candidato:</label>
+            <select name="nivel_ingles_candidato">
+                <option></option>
+                <option>Intermediário</option>
+                <option>Avançado</option>
+                <option>Fluente</option>
+                <option>Básico</option>
+                <option>Nenhum</option>
+            </select>
+
+            <label>Tipo de Contratação:</label>
+            <select name="tipo_contratacao">
+                <option></option>
+                <option>PJ/Autônomo</option>
+                <option>PJ/Autônomo, CLT Full</option>
+                <option>Hunting</option>
+                <option>CLT Cotas</option>
+                <option>CLT Full</option>
+                <option>Cooperado</option>
+                <option>Estagiário</option>
+            </select>
+
+            <label>Prioridade da Vaga:</label>
+            <select name="prioridade_vaga">
+                <option></option>
+                <option>Média: Média complexidade 6 a 10 dias</option>
+                <option>Alta: Alta complexidade 3 a 5 dias</option>
+                <option>Baixa: Baixa complexidade 11 a 30 dias</option>
+            </select>
+
+            <label>Origem da Vaga:</label>
+            <select name="origem_vaga">
+                <option></option>
+                <option>Nova Posição</option>
+                <option>Substituição</option>
+            </select>
+
+            <label>Nível Profissional da Vaga:</label>
+            <select name="nivel_profissional_vaga">
+                <option></option>
+                <option>Pleno</option>
+                <option>Sênior</option>
+                <option>Analista</option>
+                <option>Júnior</option>
+                <option>Especialista</option>
+                <option>Assistente</option>
+                <option>Gerente</option>
+                <option>Líder</option>
+                <option>Aprendiz</option>
+                <option>Supervisor</option>
+                <option>Coordenador</option>
+                <option>Auxiliar</option>
+            </select>
+
+            <label>Nível Acadêmico da Vaga:</label>
+            <select name="nivel_academico_vaga">
+                <option></option>
+                <option>Ensino Superior Completo</option>
+                <option>Ensino Médio Completo</option>
+                <option>Ensino Técnico Completo</option>
+                <option>Ensino Superior Cursando</option>
+                <option>Mestrado Completo</option>
+                <option>Pós Graduação Cursando</option>
+                <option>Pós Graduação Completo</option>
+                <option>Ensino Superior Incompleto</option>
+                <option>Ensino Médio Incompleto</option>
+                <option>Ensino Técnico Incompleto</option>
+                <option>Pós Graduação Incompleto</option>
+                <option>Mestrado Cursando</option>
+                <option>Ensino Técnico Cursando</option>
+            </select>
+
+            <label>Nível de Inglês da Vaga:</label>
+            <select name="nivel_ingles_vaga">
+                <option></option>
+                <option>Nenhum</option>
+                <option>Técnico</option>
+                <option>Básico</option>
+                <option>Avançado</option>
+                <option>Intermediário</option>
+                <option>Fluente</option>
+            </select>
+
+            <label>Nível de Espanhol da Vaga:</label>
+            <select name="nivel_espanhol_vaga">
+                <option></option>
+                <option>Nenhum</option>
+                <option>Básico</option>
+                <option>Avançado</option>
+                <option>Fluente</option>
+                <option>Intermediário</option>
+                <option>Técnico</option>
+            </select>
+
+            <label for="areas_atuacao_vaga">Áreas de Atuação da Vaga:</label>
+            <select name="areas_atuacao_vaga" id="areas_atuacao_vaga" multiple>
+            <option value="TI - UX-">TI - UX-</option>
+            <option value="TI - SAP-">TI - SAP-</option>
+            <option value="Jurídica-">Jurídica-</option>
+            <option value="Marketing-">Marketing-</option>
+            <option value="Comercial-">Comercial-</option>
+            <option value="TI - Telecom-">TI - Telecom-</option>
+            <option value="TI - Suporte-">TI - Suporte-</option>
+            <option value="TI - Projetos-">TI - Projetos-</option>
+            <option value="Administrativa-">Administrativa-</option>
+            <option value="TI - Governança-">TI - Governança-</option>
+            <option value="TI - Arquitetura-">TI - Arquitetura-</option>
+            <option value="Recursos Humanos-">Recursos Humanos-</option>
+            <option value="TI - Banco de Dados-">TI - Banco de Dados-</option>
+            <option value="TI - Infraestrutura-">TI - Infraestrutura-</option>
+            <option value="TI - Qualidade/Testes-">TI - Qualidade/Testes-</option>
+            <option value="Qualidade Corporativa-">Qualidade Corporativa-</option>
+            <option value="Relacionamento Técnico-">Relacionamento Técnico-</option>
+            <option value="TI - Projetos-TI - SAP-">TI - Projetos-TI - SAP-</option>
+            <option value="Financeira/Controladoria-">Financeira/Controladoria-</option>
+            <option value="TI - Processos e Negócios-">TI - Processos e Negócios-</option>
+            <option value="TI - Projetos-TI - Suporte-">TI - Projetos-TI - Suporte-</option>
+            <option value="TI - Desenvolvimento/Design-">TI - Desenvolvimento/Design-</option>
+            <option value="TI - Desenvolvimento/Mobile-">TI - Desenvolvimento/Mobile-</option>
+            <option value="TI - Sistemas e Ferramentas-">TI - Sistemas e Ferramentas-</option>
+            <option value="TI - Segurança da Informação-">TI - Segurança da Informação-</option>
+            <option value="TI - Desenvolvimento/Programação-">TI - Desenvolvimento/Programação-</option>
+            <option value="TI - Infraestrutura-TI - Suporte-">TI - Infraestrutura-TI - Suporte-</option>
+            <option value="TI - Infraestrutura-TI - Projetos-">TI - Infraestrutura-TI - Projetos-</option>
+            <option value="TI - Banco de Dados-TI - Projetos-">TI - Banco de Dados-TI - Projetos-</option>
+            <option value="Gestão e Alocação de Recursos de TI-">Gestão e Alocação de Recursos de TI-</option>
+            <option value="Financeira/Controladoria-TI - Projetos-">Financeira/Controladoria-TI - Projetos-</option>
+            <option value="Gestão e Alocação de Recursos de TI-TI - SAP-">Gestão e Alocação de Recursos de TI-TI - SAP-</option>
+            <option value="TI - Governança-TI - Infraestrutura-TI - Suporte-">TI - Governança-TI - Infraestrutura-TI - Suporte-</option>
+            <option value="Gestão e Alocação de Recursos de TI-TI - Projetos-">Gestão e Alocação de Recursos de TI-TI - Projetos-</option>
+            <option value="Gestão e Alocação de Recursos de TI-TI - Infraestrutura-">Gestão e Alocação de Recursos de TI-TI - Infraestrutura-</option>
+        </select>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

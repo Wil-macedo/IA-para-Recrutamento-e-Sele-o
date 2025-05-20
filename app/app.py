@@ -1,10 +1,13 @@
 
+from flasgger import Swagger
 from flask import Flask, request, jsonify
 from application.libs.train import train_model
 from application.libs.predict import predict_model
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
+swagger = Swagger(app, template_file='swagger.yaml')
 
 @app.route("/", methods=['GET'])
 def index():
@@ -21,16 +24,22 @@ def predict():
     return jsonify(result)
 
 
-@app.route("/predict-painel", methods=['POST'])
-def predict_painel():
 
+@app.route("/predict-painel", methods=['GET'])
+def predict_painel_get():
+    return render_template("formulario.html")
+
+
+@app.route("/predict-painel", methods=['POST'])
+def predict_painel_post():
     try:
-        data = request.get_json()
-        result = predict_model(data)
+        data = request.form.to_dict()
+        result = predict_model(data)  # Certifique-se de que isso retorna um dict, str ou algo serializável
     except Exception as ex:
-        result = str(ex)
-        
+        result = {"error": str(ex)}
+
     return jsonify(result)
+
 
 
 @app.route("/train", methods=['GET'])

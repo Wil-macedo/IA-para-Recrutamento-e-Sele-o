@@ -1,0 +1,172 @@
+swagger: "2.0"
+info:
+  title: "API de Previsão de Contratação"
+  version: "1.0.0"
+  description: "API para treinar um modelo de Machine Learning e prever a probabilidade de contratação de candidatos."
+  contact:
+    name: "Seu Nome/Time"
+    url: "Sua URL de Contato"
+    email: "seuemail@example.com"
+  license:
+    name: "Sua Licença"
+    url: "URL da Licença"
+host: "localhost:5000" # Altere se sua API rodar em host/porta diferente
+basePath: "/"
+schemes:
+  - "http"
+tags:
+  - name: "Geral"
+    description: "Operações gerais da API"
+  - name: "Previsão"
+    description: "Operações de previsão de contratação"
+  - name: "Treinamento"
+    description: "Operações de treinamento do modelo"
+paths:
+  /:
+    get:
+      tags:
+        - "Geral"
+      summary: "Endpoint raiz da API."
+      description: "Retorna uma mensagem indicando que a API está em execução."
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Mensagem de boas-vindas da API."
+          schema:
+            type: "object"
+            properties:
+              mensagem:
+                type: "string"
+                example: "API de Previsão está rodando! Use /predict para fazer previsões."
+  /predict:
+    post:
+      tags:
+        - "Previsão"
+      summary: "Realiza uma previsão de contratação para um candidato."
+      description: "Recebe os dados do candidato em formato JSON e retorna \"APROVADO\" ou \"REPROVADO\"."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json" # Embora o exemplo seja uma string, o jsonify o tornará JSON
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          description: "Dados do candidato para previsão."
+          schema:
+            $ref: "#/definitions/CandidateInfo"
+      responses:
+        "200":
+          description: "Resultado da previsão."
+          schema:
+            type: "string" # O endpoint retorna uma string diretamente, mas jsonify a envolve.
+                           # Para ser mais preciso com o jsonify, poderia ser um objeto com uma chave.
+            example: "APROVADO"
+        "400":
+          description: "Erro nos dados de entrada ou durante a previsão."
+          schema:
+            type: "string"
+            example: "Erro: Chave 'sexo' não encontrada."
+  /predict-painel:
+    post:
+      tags:
+        - "Previsão"
+      summary: "Realiza uma previsão de contratação (versão para painel)."
+      description: "Funcionalidade similar ao /predict, mas pode ter tratamento de erro diferenciado ou logging."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          description: "Dados do candidato para previsão."
+          schema:
+            $ref: "#/definitions/CandidateInfo" # Reutiliza a definição
+      responses:
+        "200":
+          description: "Resultado da previsão."
+          schema:
+            type: "string"
+            example: "REPROVADO"
+        "400":
+          description: "Erro nos dados de entrada ou durante a previsão."
+          schema:
+            type: "string"
+            example: "Erro: Arquivo de modelo não encontrado."
+  /train:
+    get:
+      tags:
+        - "Treinamento"
+      summary: "Inicia o processo de treinamento do modelo de Machine Learning."
+      description: "Retorna o status do treinamento, incluindo a acurácia do modelo."
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Resultado do treinamento do modelo."
+          schema:
+            type: "string"
+            example: "MODEL TRAINED = ACCURACY:95.00%"
+        "500":
+          description: "Erro durante o processo de treinamento."
+          schema:
+            type: "string"
+            example: "FALHA NO PROCESSAMENTO DOS DADOS"
+definitions:
+  CandidateInfo:
+    type: "object"
+    required:
+      - "sexo"
+      - "nivel_ingles_candidato"
+      - "tipo_contratacao"
+      - "prioridade_vaga"
+      - "origem_vaga"
+      - "nivel_profissional_vaga"
+      - "nivel_academico_vaga"
+      - "nivel_ingles_vaga"
+      - "nivel_espanhol_vaga"
+      - "areas_atuacao_vaga"
+    properties:
+      sexo:
+        type: "string"
+        description: "Sexo do candidato."
+        example: "Masculino"
+      nivel_ingles_candidato:
+        type: "string"
+        description: "Nível de inglês do candidato."
+        example: "Avançado"
+      tipo_contratacao:
+        type: "string"
+        description: "Tipo de contratação desejada/oferecida."
+        example: "PJ/Autônomo"
+      prioridade_vaga:
+        type: "string"
+        description: "Prioridade da vaga."
+        example: "Média: Média complexidade 6 a 10 dias"
+      origem_vaga:
+        type: "string"
+        description: "Origem da vaga."
+        example: "Nova Posição"
+      nivel_profissional_vaga:
+        type: "string"
+        description: "Nível profissional requerido pela vaga."
+        example: "Sênior"
+      nivel_academico_vaga:
+        type: "string"
+        description: "Nível acadêmico requerido pela vaga."
+        example: "Ensino Médio Completo"
+      nivel_ingles_vaga:
+        type: "string"
+        description: "Nível de inglês requerido pela vaga."
+        example: "Nenhum"
+      nivel_espanhol_vaga:
+        type: "string"
+        description: "Nível de espanhol requerido pela vaga."
+        example: "Nenhum"
+      areas_atuacao_vaga:
+        type: "string"
+        description: "Áreas de atuação da vaga."
+        example: "Gestão e Alocação de Recursos de TI-"
