@@ -1,0 +1,68 @@
+[
+    {
+        "timestamp": "2025-05-20 23:20:58",
+        "entrada": {
+            "sexo": "Feminino",
+            "nivel_ingles_candidato": "Nenhum",
+            "tipo_contratacao": "Estagiário",
+            "prioridade_vaga": "Baixa: Baixa complexidade 11 a 30 dias",
+            "origem_vaga": "Substituição",
+            "nivel_profissional_vaga": "Coordenador",
+            "nivel_academico_vaga": "Ensino Técnico Cursando",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Gestão e Alocação de Recursos de TI-TI - Infraestrutura-"
+        },
+        "saida": "APROVADO"
+    },
+    {
+        "timestamp": "2025-05-20 23:21:48",
+        "entrada": {
+            "sexo": "Feminino",
+            "nivel_ingles_candidato": "Nenhum",
+            "tipo_contratacao": "Estagiário",
+            "prioridade_vaga": "Baixa: Baixa complexidade 11 a 30 dias",
+            "origem_vaga": "Substituição",
+            "nivel_profissional_vaga": "Coordenador",
+            "nivel_academico_vaga": "Ensino Técnico Cursando",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Gestão e Alocação de Recursos de TI-TI - Infraestrutura-"
+        },
+        "saida": "APROVADO"
+    },
+    {
+        "timestamp": "2025-05-20 23:25:50",
+        "entrada": {
+            "sexo": "Feminino",
+            "nivel_ingles_candidato": "Nenhum",
+            "tipo_contratacao": "Estagiário",
+            "prioridade_vaga": "Baixa: Baixa complexidade 11 a 30 dias",
+            "origem_vaga": "Substituição",
+            "nivel_profissional_vaga": "Coordenador",
+            "nivel_academico_vaga": "Ensino Técnico Cursando",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Gestão e Alocação de Recursos de TI-TI - Infraestrutura-",
+            "total_seconds": 0.182499
+        },
+        "saida": "APROVADO"
+    },
+    {
+        "timestamp": "2025-05-20 23:25:51",
+        "entrada": {
+            "sexo": "Feminino",
+            "nivel_ingles_candidato": "Nenhum",
+            "tipo_contratacao": "Estagiário",
+            "prioridade_vaga": "Baixa: Baixa complexidade 11 a 30 dias",
+            "origem_vaga": "Substituição",
+            "nivel_profissional_vaga": "Coordenador",
+            "nivel_academico_vaga": "Ensino Técnico Cursando",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Gestão e Alocação de Recursos de TI-TI - Infraestrutura-",
+            "total_seconds": 0.044999
+        },
+        "saida": "APROVADO"
+    }
+]

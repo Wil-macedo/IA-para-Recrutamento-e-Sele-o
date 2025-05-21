@@ -1,0 +1,36 @@
+[
+    {
+        "timestamp": "2025-05-20 23:49:27",
+        "entrada": {
+            "sexo": "Feminino",
+            "nivel_ingles_candidato": "Nenhum",
+            "tipo_contratacao": "Estagiário",
+            "prioridade_vaga": "Baixa: Baixa complexidade 11 a 30 dias",
+            "origem_vaga": "Substituição",
+            "nivel_profissional_vaga": "Coordenador",
+            "nivel_academico_vaga": "Ensino Técnico Cursando",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Gestão e Alocação de Recursos de TI-TI - Infraestrutura-",
+            "total_seconds": 0.066245
+        },
+        "saida": "APROVADO"
+    },
+    {
+        "timestamp": "2025-05-20 23:49:57",
+        "entrada": {
+            "sexo": "Masculino",
+            "nivel_ingles_candidato": "Intermediário",
+            "tipo_contratacao": "PJ/Autônomo",
+            "prioridade_vaga": "Média: Média complexidade 6 a 10 dias",
+            "origem_vaga": "Nova Posição",
+            "nivel_profissional_vaga": "Pleno",
+            "nivel_academico_vaga": "Ensino Superior Completo",
+            "nivel_ingles_vaga": "Nenhum",
+            "nivel_espanhol_vaga": "Nenhum",
+            "areas_atuacao_vaga": "Marketing-",
+            "total_seconds": 0.031729
+        },
+        "saida": "APROVADO"
+    }
+]

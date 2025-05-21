@@ -115,6 +115,57 @@ paths:
           schema:
             type: "string"
             example: "FALHA NO PROCESSAMENTO DOS DADOS"
+  /log:
+    get:
+      tags:
+        - "Geral"
+      summary: "Consulta os logs de previsões por data"
+      description: "Retorna os registros de previsões salvos em arquivos separados por data. A data deve ser passada como query string no formato YYYY-MM-DD."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "date"
+          in: "query"
+          required: true
+          description: "Data dos logs desejados no formato YYYY-MM-DD. Exemplo: 2025-05-20"
+          type: "string"
+          format: "date"
+      responses:
+        "200":
+          description: "Lista de registros de previsões do dia especificado."
+          schema:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                timestamp:
+                  type: "string"
+                  example: "2025-05-20 15:43:10"
+                entrada:
+                  type: "object"
+                  example:
+                    sexo: "Masculino"
+                    nivel_ingles_candidato: "Avançado"
+                saida:
+                  type: "string"
+                  example: "APROVADO"
+        "400":
+          description: "Data não informada na query string."
+          schema:
+            type: "object"
+            properties:
+              error:
+                type: "string"
+                example: "Parâmetro 'date' é obrigatório. Ex: /log?date=2025-05-20"
+        "404":
+          description: "Nenhum log encontrado para a data especificada."
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Sem logs para 2025-05-20."
+
 definitions:
   CandidateInfo:
     type: "object"

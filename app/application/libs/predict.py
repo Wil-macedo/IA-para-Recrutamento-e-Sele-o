@@ -1,6 +1,8 @@
 import os
 import joblib
 import pandas as pd
+from datetime import datetime
+from .log import salvar_log_json
 from .load_model import load_model
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
@@ -35,6 +37,8 @@ def predict_model(info: dict) -> str:
     "Return a predict result"
     global selected_features
 
+    start = datetime.now()
+    
     try:
         model = load_model()
 
@@ -78,6 +82,9 @@ def predict_model(info: dict) -> str:
 
         result = "APROVADO" if valor_predito else "REPROVADO"
 
+        info["total_seconds"] = (datetime.now() - start).total_seconds()
+        salvar_log_json(info, result)
+        
         return result
 
     except Exception as ex:
